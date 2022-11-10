@@ -1,0 +1,118 @@
+#include <iostream>
+
+using namespace std;
+
+struct anak {
+  string nama;
+  double banyak;
+};
+
+string nilaitertinggi(anak ank[], int jml) {
+  string ket;
+  int max = 0;
+  for (int i = 0; i < jml; i++) {
+    if (max < ank[i].banyak) {
+      max = ank[i].banyak;
+      ket = ank[i].nama;
+    }
+  }
+  return ket;
+}
+
+int main() {
+  const int jumlah_ank = 3;
+  anak ank[jumlah_ank];
+  int i, pilih, mkn, jam;
+  double hasil; 
+  string input;  
+  string kode ="123456";   
+  string login = "block";
+  float total;
+  
+
+  cout << " ================== " << endl;
+  cout << "|    1. Kasus 1    |" << endl;
+  cout << "|    2. Kasus 2    |" << endl;
+  cout << "|    3. Kasus 3    |" << endl;
+  cout << " ================== " << endl;
+  cout << " Pilih Kasus :  " ;
+  cin >> pilih;
+
+  if (pilih == 1){
+    i = 0;
+    do {
+
+        cout << "Masukkan Nama anak ke-" << i+1 << ": ";
+        cin >> ank[i].nama;
+
+        cout << "Masukkan banyak permen " << ank[i].nama << ": ";
+        cin >> ank[i].banyak;
+
+        cout << "--------------------------" << endl;
+        cout << "Nama  :" << ank[i].nama << endl;
+        cout << "Banyak :" << ank[i].banyak << endl; 
+        cout << "---------------------------" << endl;
+        cout << endl;
+
+        i = i + 1;
+      
+      } while (i < jumlah_ank);
+
+    cout << "Pemilik permen terbanyak adalah yaitu: " <<                       nilaitertinggi(ank, jumlah_ank) << endl;
+
+    cout << endl;
+  }
+
+  else if (pilih == 2){
+    i = 1;    
+   
+   do {        
+       cout << "Masukan Pin Anda : "; cin>>input;        
+       if (input == kode) {
+         
+           cout << " ================"  << endl;            
+           cout << "| Login Berhasil |" << endl;   
+           cout << "|   Saldo Anda   |" << endl;
+           cout << "|  Rp.0,000,000  |" << endl;
+           cout << "| ^^^^^^^^^^^^^^ |" << endl;            
+           cout << " ================"  << endl;
+         
+           i = 4;
+           login = "berhasil";        } 
+       else {            
+           cout << "==========================="  << endl;            
+           cout << "kode Salah! ("<<i<<"x)"       << endl;
+		       cout << "============================="<< endl;            
+           i = i +1;
+       }   
+    } while (i <= 3);
+	
+    if(login != "berhasil"){
+       cout<<"Anda telah 3x salah.\n";       
+       cout<<"KARTU ANDA TELAH DIBLOKIIR, SILAHKAN HUBUNGI BANK   TERDEKAT"; 
+	  } 
+  }
+    
+  else if (pilih == 3){
+    cout << "Masukan Harga Makanan: Rp.";
+    cin >> mkn;
+    cout << "Masukan Jam Belanja: ";
+    cin >> jam;
+
+      if ((jam >= 1300) && (jam <= 1400)) {
+        total = 0.80 * mkn;
+        cout << "Selamat anda mendapatkan diskon 20% " << endl;
+        cout << "Total Harga: " << total;
+      }
+      else if (jam >= 1400) {
+        cout << "Mohon maaf, anda tidak mendapatkan diskon" << endl;
+        cout << "Total Harga: " << mkn;
+      }
+      else {
+        cout << "Mohon maaf, anda tidak mendapatkan diskon" << endl;
+        cout << "Total Harga: " << mkn;
+      }
+  }
+
+  
+}
